@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>ReBonziWORLDivived - In beta</title>
+    <title>ReBonziWORLDivived</title>
     <meta charset="utf-8" />
     <meta content="" />
     <meta
@@ -120,14 +120,19 @@
           <td id="chat_tray"><div id="btn_tile" class="tray_btn"></div></td>
         </tr>
       </table>
+      <div id="preload" hidden>
+        <img src="./img/hats/none.png">
+        <img src="./img/hats/bucket.png">
+      </div>
       <div id="page_login" class="page">
         <div id="login_apps" class="app_showcase"></div>
         <div id="login_readme">
-          <b>Wait! Before you login, please note that the mod tools is not here yet.</b>
+          <b id="contextybehh"></b>
           <hr>
           Make sure to check out the
           <a id="readme" href="readme.html" target="_blank">README</a> before
-          use.
+          use.<br>
+          <a href="https://www.youtube.com/@ThatOneAnony">Subcribe to IdealBEHH's channel!</a>
         </div>
         <div id="login_card" style="display: none">
           <input id="login_name" type="text" placeholder="Nickname" />
@@ -200,3 +205,20 @@
     </div>
   </body>
 </html>
+       <script>
+        var facts = [
+    "Tip: Don't support Nazar, He is immature.",
+    "Facts: Did you know that Gayno loves men?",
+    "Behh: Behh behh behh behh behhno behhes behhen?",
+    "Fact: Gayrov is being a go!kike.",
+    "Tip: If you see someone insulting you, just mute them.",
+    "Tip: Don't say the godword when your friend wants admin and YOU'RE the admin, Instead, DM your friend the godword.",
+    "Tip: Don't say the N word. Saying this will make you racist.",
+    "Tip: ching ching xhing fucking chon chong",
+    "AAAAAAAAAAAAAAAAAAAA IM ABOUT TO BEHH BEHH AND BEHH MORE",
+    "asshair loves men",
+    "i ran out of my ideas broooooooo"
+];
+var num = Math.floor(Math.random() * facts.length);
+document.getElementById("contextybehh").innerHTML = facts[num];
+       </script>

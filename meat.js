@@ -1,9 +1,102 @@
+// cosmic fucking broke bonzitv
+// how??????? explain???? *visible confusion*
+
+// go behh yourself
+
+
+var bonziTvCommercialMode = false;
+var bonziTvCool = false;
+
+// youtube url variables 
+let youtube_url = "https://www.youtube.com/watch?v=";
+let youtube_tiny_url = "https://www.youtube.com/watch?v=";
+let youtube_shorts_url = "";
+let youtube_embed_url = "";
+let youtube_music_url = "";
+
+
+/*
+  "https://www.youtube.com/watch?v=97dyt7MXWpo",
+  "https://www.youtube.com/watch?v=t0JyCdk5ymo",
+  "https://www.youtube.com/watch?v=bzXzGMbdQfY",
+  "https://www.youtube.com/watch?v=DuD_boVOl54",
+  "https://www.youtube.com/watch?v=H50wW4eAFKo",
+  "https://www.youtube.com/watch?v=APAcU3YBhYc",
+  "https://www.youtube.com/watch?v=H50wW4eAFKo",
+  "https://www.youtube.com/watch?v=MmB9b5njVbA",
+  "https://www.youtube.com/watch?v=tYoO9XkCCHg",
+  "https://www.youtube.com/watch?v=K0damuN_9bQ",
+  "https://www.youtube.com/watch?v=hb59QZW2SCA",
+  "https://www.youtube.com/watch?v=5ls7g9eH7ss",
+  "https://www.youtube.com/watch?v=VJs_VALzi_8",
+  "https://www.youtube.com/watch?v=GCA5CB5uUyA",
+  "https://www.youtube.com/watch?v=Jz6FCFoL3k4",
+  "https://www.youtube.com/watch?v=CDLyImqvqVY",
+  "https://www.youtube.com/watch?v=Wt2rGmUmm2A",
+  "https://www.youtube.com/watch?v=YnuYnzXUuGY",
+  "https://www.youtube.com/watch?v=exjhztp_IQY"
+*/
+
+// the clusterfuck of video ids
+var videoIdsCommercials = [
+  "https://www.youtube.com/watch?v=b2OUKjLzcEc",
+  "https://www.youtube.com/watch?v=Uyw-bne3G2A",
+  "https://www.youtube.com/watch?v=gcGI1f24eyM",
+  "https://www.youtube.com/watch?v=K0damuN_9bQ",
+  "https://www.youtube.com/watch?v=5ls7g9eH7ss",
+  "https://www.youtube.com/watch?v=hb59QZW2SCA",
+  "https://www.youtube.com/watch?v=VJs_VALzi_8",
+  "https://www.youtube.com/watch?v=GCA5CB5uUyA",
+  "https://www.youtube.com/watch?v=h6cp-6Zthm4",
+  "https://www.youtube.com/watch?v=DuD_boVOl54",
+  "https://www.youtube.com/watch?v=Jz6FCFoL3k4",
+  "https://www.youtube.com/watch?v=9943uVZ-eL4",
+  "https://www.youtube.com/watch?v=3rvFiHa6rJk",
+  "https://www.youtube.com/watch?v=DSYiXCEWsVc",
+  "https://www.youtube.com/watch?v=AykkOSaLphY",
+  "https://www.youtube.com/watch?v=liqetY2e7a8",
+  "https://www.youtube.com/watch?v=NqFfHPleTHY",
+  "https://www.youtube.com/watch?v=M9VJDQZq7ZE",
+  "https://www.youtube.com/watch?v=6zL2ZN10LYc",
+  "https://www.youtube.com/watch?v=eq0817IPBbY"
+]
+var videoIds4PM2430PM = [
+];
+var videoIds5PM = [
+];
+var videoIds7PM = [
+];
+var videoIds25MinutesofMSAgent = [
+    "https://www.youtube.com/watch?v=e2qY8JtjJag",
+    "https://www.youtube.com/watch?v=d-vB8qdNSYc",
+    "https://www.youtube.com/watch?v=SNK74ecgFKg"
+];
+
 const log = require("./log.js").log;
 const Ban = require("./ban.js");
 const Utils = require("./utils.js");
 const io = require('./index.js').io;
 const settings = require("./settings.json");
 const sanitize = require('sanitize-html');
+
+
+
+
+// fuck off bozoworlders!
+function sanitizeHTML(string){
+return string
+    .replaceAll("&",  "&amp;")
+    .replaceAll("#",  "&num;")
+    //.replaceAll("'",  "&apos;")
+    .replaceAll("\"", "&quot;");
+}
+function sanitizeHTML2(string){
+return string
+    .replaceAll("&",  "&amp;")
+    .replaceAll("#",  "&num;")
+    .replaceAll("'",  "&apos;")
+    .replaceAll("\"", "&quot;");
+}
 
 let roomsPublic = [];
 let rooms = {};
@@ -13,6 +106,47 @@ exports.beat = function() {
     io.on('connection', function(socket) {
         new User(socket);
     });
+};
+
+var settingsSantize = {
+    allowedTags: ["h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "p", "a", "ul", "ol", "nl", "li", "b", "i", "strong", "em", "strike", "code", "hr", "br", "div", "table", "thead", "caption", "tbody", "tr", "th", "td", "pre", "iframe", "marquee", "button", "input", "details", "summary", "progress", "meter", "font", "span", "select", "option", "abbr", "acronym", "adress", "article", "aside", "bdi", "bdo", "big", "center", "site", "data", "datalist", "dl", "del", "dfn", "dialog", "dir", "dl", "dt", "fieldset", "figure", "figcaption", "header", "ins", "kbd", "legend", "mark", "nav", "optgroup", "form", "q", "rp", "rt", "ruby", "s", "sample", "section", "small", "sub", "sup", "template", "textarea", "tt", "u"],
+    allowedAttributes: {
+        a: ["href", "name", "target"],
+        p: ["align"],
+        table: ["align", "border", "bgcolor", "cellpadding", "cellspadding", "frame", "rules", "width"],
+        tbody: ["align", "valign"],
+        tfoot: ["align", "valign"],
+        td: ["align", "colspan", "headers", "nowrap"],
+        th: ["align", "colspan", "headers", "nowrap"],
+        textarea: ["cols", "dirname", "disabled", "placeholder", "maxlength", "readonly", "required", "rows", "wrap"],
+        pre: ["width"],
+        ol: ["compact", "reversed", "start", "type"],
+        option: ["disabled"],
+        optgroup: ["disabled", "label", "selected"],
+        legend: ["align"],
+        li: ["type", "value"],
+        hr: ["align", "noshade", "size", "width"],
+        fieldset: ["disabled"],
+        dialog: ["open"],
+        dir: ["compact"],
+        bdo: ["dir"],
+        marquee: ["behavior", "bgcolor", "direction", "width", "height", "loop", "scrollamount", "scrolldelay"],
+        button: ["disabled"],
+        input: ["value", "type", "disabled", "maxlength", "max", "min", "placeholder", "readonly", "required", "checked"],
+        details: ["open"],
+        div: ["align"],
+        progress: ["value", "max"],
+        meter: ["value", "max", "min", "optimum", "low", "high"],
+        font: ["size", "family", "color"],
+        select: ["disabled", "multiple", "require"],
+        ul: ["type", "compact"],
+        "*": ["hidden", "spellcheck", "title", "contenteditable", "data-style"],
+    },
+    selfClosing: ["img", "br", "hr", "area", "base", "basefont", "input", "link", "meta", "wbr"],
+    allowedSchemes: ["http", "https", "ftp", "mailto", "data"],
+    allowedSchemesByTag: {},
+    allowedSchemesAppliedToAttributes: ["href", "src", "cite"],
+    allowProtocolRelative: true,
 };
 
 function checkRoomEmpty(room) {
@@ -147,12 +281,77 @@ let userCommands = {
     stoptyping: function () {
         this.room.emit("stoptyping", { guid: this.guid })
     },
-    "youtube": function(vidRaw) {
-        var vid = this.private.sanitize ? sanitize(vidRaw) : vidRaw;
+   "youtube": function(vidRaw) {
+        if (vidRaw.includes("\"")) { 
+            this.socket.emit("talk", {
+            text: "GUYS! LOOK AT ME! I AM TRYING TO FUCK THE SERVER! BUT I AM ACTUALLY A SCRIPT KIDDIE! LOLOLOLOLOL",
+            guid: this.guid
+            })
+            return
+        };
+        if (vidRaw.includes("'")) { 
+            this.socket.emit("talk", {
+            text: "GUYS! LOOK AT ME! I AM TRYING TO FUCK THE SERVER! BUT I AM ACTUALLY A SCRIPT KIDDIE! LOLOLOLOLOL",
+            guid: this.guid
+            })
+            return
+        };
+        var vid = this.private.sanitize ? sanitize(sanitizeHTML(vidRaw)) : sanitizeHTML(vidRaw);
         this.room.emit("youtube", {
             guid: this.guid,
-            vid: vid
+            vid: vid,
         });
+    },
+       "video": function (vidRaw) {
+        if (vidRaw.includes("\"")) {return};
+        if (vidRaw.includes("'")) {return};
+        var vid = this.private.sanitize ? sanitize(sanitizeHTML(vidRaw)) : sanitizeHTML(vidRaw);
+        this.room.emit("video", {
+            guid: this.guid,
+            vid: vid,
+        });
+    },
+    "audio": function (audRaw) {
+        if (audRaw.includes("\"")) {return};
+        if (audRaw.includes("'")) {return};
+        var aud = this.private.sanitize ? sanitize(sanitizeHTML(audRaw)) : sanitizeHTML(audRaw);
+        this.room.emit("audio", {
+            guid: this.guid,
+            aud: aud,
+        });
+    },
+     "image": function (imgRaw) {
+        if (imgRaw.includes("\"")) {return};
+        if (imgRaw.includes("'")) {return};
+        var img = this.private.sanitize ? sanitize(sanitizeHTML(imgRaw)) : sanitizeHTML(imgRaw);
+        this.room.emit("image", {
+            guid: this.guid,
+            img: img,
+        });
+    }, 
+    "status": function() {
+        let argsString = Utils.argsString(arguments);
+        if (argsString.length > this.room.prefs.status_limit)
+            return;
+        if (argsString.includes("{COLOR}")) {
+            argsString = this.public.color;
+        }
+        if (argsString.includes("{NAME}")) {
+            argsString = sanitizeHTML2(this.public.name);
+        }
+        if (argsString.includes("{ROOM}")) {
+            argsString = sanitizeHTML2(this.room.rid.slice(0,16));
+        }
+        if (argsString.includes("\"")) {
+            return;
+        }
+        if (argsString.includes("'")) {
+            return;
+        }
+
+        let status = argsString;
+        this.public.status = this.private.sanitize ? sanitize(status) : status;
+        this.room.updateUser(this);
     },
     "backflip": function(swag) {
         this.room.emit("backflip", {
@@ -221,15 +420,19 @@ let userCommands = {
             target.socket.emit("ban", {
               reason: "You got banned.",
             });
-            Ban.addBan(target.socket.handshake.headers["cf-connecting-ip"], 24, "You got banned.");
+              Ban.addBan(target.getIp(), 24 * 3600, "You got banned.");
             Ban.handleBan(target.socket);
+              target.disconnect();
         } else {
           this.socket.emit("alert", { title: "oh fuck", msg: "The user you are trying to kick left. Get dunked on nerd", button: "Ok I'll" });
         }
       },
+      "unban": function(ip) {
+  Ban.removeBan(ip)
+  },
     crosscolor: function(color) {
         var clrurl = this.private.sanitize ? sanitize(color) : color;
-        if (clrurl.match(/105197343/gi) || clrurl.match(/1038507/gi) || clrurl.match(/pope/gi) || clrurl.match(/plop/gi) || clrurl.match(/780654/gi) || clrurl.match(/bonzi.lol/gi)) {
+        if (clrurl.match(/105197343/gi) || clrurl.match(/1038507/gi) || clrurl.match(/pope/gi) || clrurl.match(/plop/gi) || clrurl.match(/780654/gi)) {
           this.disconnect();
           return;
         }
@@ -252,6 +455,21 @@ let userCommands = {
         }
 
         //this.socket.emit("alert", "Access to this command has been disabled.");
+      },
+      "hat": function(hat) {
+         if (typeof hat != "undefined") {
+            if (settings.bonziHats.indexOf(hat) == -1)
+                return;
+            
+            this.public.hat = hat;
+        } else {
+            let bc = settings.bonziHats;
+            this.public.hat = bc[
+                Math.floor(Math.random() * bc.length)
+            ];
+        }
+
+        this.room.updateUser(this);
       },
     "welcome": function() {
         this.room.emit("welcome", {
@@ -364,6 +582,7 @@ class User {
                 color_cross: 'none',
                 hue: 0,
                 saturation: 100,
+                hat: "none",
                 flags: {
                   admin: false,
                   nocolor: false,
@@ -508,11 +727,11 @@ class User {
         if (typeof data.text == "undefined")
             return;
 
-        let text = this.private.sanitize ? sanitize(data.text) : data.text;
+          let text = this.private.sanitize ? sanitize(sanitizeHTML(data.text)) : sanitizeHTML(data.text);
         if ((text.length <= this.room.prefs.char_limit) && (text.length > 0)) {
             this.room.emit('talk', {
                 guid: this.guid,
-                text: text
+                text: sanitizeHTML(text)
             });
         }
     }
