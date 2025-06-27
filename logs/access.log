@@ -399,3 +399,8 @@
 {"guid":"27413d73daedf0b9","ip":"::1","level":"info","message":"disconnect"}
 {"guid":"0e4665e86fb4b833","ip":"::1","level":"info","message":"connect"}
 {"guid":"0e4665e86fb4b833","ip":"::1","level":"info","message":"disconnect"}
+{"guid":"de3d579dcb378a30","ip":"::ffff:10.0.0.3","level":"info","message":"connect"}
+{"guid":"de3d579dcb378a30","ip":"::ffff:10.0.0.3","level":"info","message":"disconnect"}
+{"guid":"f9bcc7d6426c599e","ip":"::ffff:10.0.0.3","level":"info","message":"connect"}
+{"guid":"f9bcc7d6426c599e","ip":"::ffff:10.0.0.3","level":"info","message":"disconnect"}
+{"guid":"ebaad16adfecd457","ip":"::ffff:10.0.0.3","level":"info","message":"connect"}
