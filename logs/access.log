@@ -404,3 +404,6 @@
 {"guid":"f9bcc7d6426c599e","ip":"::ffff:10.0.0.3","level":"info","message":"connect"}
 {"guid":"f9bcc7d6426c599e","ip":"::ffff:10.0.0.3","level":"info","message":"disconnect"}
 {"guid":"ebaad16adfecd457","ip":"::ffff:10.0.0.3","level":"info","message":"connect"}
+{"guid":"b30b3c3bcc868960","ip":"::ffff:10.0.0.3","level":"info","message":"connect"}
+{"guid":"c76c59bfc74fdae2","ip":"::ffff:10.0.0.3","level":"info","message":"connect"}
+{"guid":"c76c59bfc74fdae2","ip":"::ffff:10.0.0.3","level":"info","message":"disconnect"}
