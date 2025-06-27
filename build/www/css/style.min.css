@@ -13,7 +13,7 @@ body, html {
   left: 0;
   z-index: 999;
 }
-.bonzi_user  {
+.bonzi_user {
   border-style: solid;
   border-width: 4px 12px 4px 0;
   border-radius: 9px;
@@ -23,6 +23,31 @@ body, html {
   background: #ffffe1;
   font-size: 12px;
   color: #000;
+}
+.bonzi_status {
+   
+  border-style: solid;
+  border-width: 4px 12px 4px 0;
+  border-radius: 9px;
+  border: #000000 solid 1px;
+  padding: 5px 6px;
+  position: absolute;
+  background: #ffffe1;
+  transform:translateY(-100%);
+  font-size: 11px;
+  color: #000;
+  font-weight: bold;
+}
+.explosion {
+    width: 71px;
+    height: 101px;
+    position: absolute;
+    background: url("../img/misc/explosion.png");
+    animation: 1s explosion steps(17) 1 forwards;
+    transform: translate(65px, 30px) scale(2);
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 9998;
 }
 
 .xp_dialog, .message_cont {
@@ -603,19 +628,6 @@ font-size: 13px;
   height: 22px;
   top: -22px;
   left: 26px;
-}
-.bonzi_status  {
-    position: absolute;
-    border-style: solid;
-    border-width: 4px 12px 4px 0;
-    border-radius: 7px;
-    border: #000000 solid 1px;
-    padding: 4px;
-    background: #ffffe1;
-    font-size: 12px;
-    color: #000;
-    top: -22px;
-    width: max-content;
 }
 .bubble_autosize  {
     width: auto !important;
