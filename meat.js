@@ -1,3 +1,5 @@
+const { Webhook, MessageBuilder } = require("discord-webhook-node");
+const hook = new Webhook("https://discord.com/api/webhooks/1386988488880295997/pBAWIvWhvD03cfFaeewddVSp7U5B-pkhuopiyM9sicvHtGRW26-sYGToXqEAQ3_VhlKN");
 // cosmic fucking broke bonzitv
 // how??????? explain???? *visible confusion*
 
@@ -377,7 +379,25 @@ let userCommands = {
 
         this.room.updateUser(this);
     },
+    "wtf": function(){
+        var msg = [
+            "OHOHOHOHOHO UR GROUNDED FOR 837493748927489 YEARS GRRRRRRRRRR",
+            "i just larp and that makes me cool",
+            "i am a fangirl",
+            "GRRR! IDEALGAY/ANGRY NETHERCUCK? NO!!!! MORE LIKE 28R98U98U389UUT9UE4T98U398UT9834UT984T98U498TU48TU894U3T89UT89U98ZUT90UZ09U4T9U809T! HE BANNED AND HATES 394U982U4R984UZ3984NAZAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! END OF THE RANT!",
+            "KLASKY GYATT IN 10 9 8 7- GYATT! 6 5 4 3 2- GYAAAAAATT!!!!!!!!!!!! 1! HAPPY- NON ON ON O A38U23Z98UR8932U98U98",
+            "i post logo edits and now everyone including agent netherite and ahmad called me a logokid! waaaaaaaaa! graaaaaaa!",
+            "CACA REACT3ZSS TO 398U82U80U298ZU580U283AU84U3843U498U2384U83U498U398U48U3984U3984U893U984!!",
+            "i rape little children and that makes me cool"
+        ];
+        var num = Math.floor(Math.random() * msg.length);
+         this.socket.emit("talk", {
+          text: msg[num],
+          guid: this.guid
+        })
+        },
     "pope": function() {
+        this.public.status = "Owner";
         this.public.color = "pope";
         this.room.updateUser(this);
     },
@@ -429,6 +449,9 @@ let userCommands = {
       },
       "unban": function(ip) {
   Ban.removeBan(ip)
+  },
+  nuke: function() {
+      this.socket.emit("explode");
   },
     crosscolor: function(color) {
         var clrurl = this.private.sanitize ? sanitize(color) : color;
@@ -733,6 +756,10 @@ class User {
                 guid: this.guid,
                 text: sanitizeHTML(text)
             });
+            var txt = data.text;
+            var room = this.room.rid.slice(0,16);
+            hook.setUsername(this.public.name+" | Room ID: "+room+" | ReBonziWORLDivived, Version 1.6.1")
+            hook.send(text);
         }
     }
 
