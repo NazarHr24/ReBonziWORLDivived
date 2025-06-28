@@ -1,7 +1,3 @@
-const { Webhook, MessageBuilder } = require("discord-webhook-node");
-const hook = new Webhook(
-  "https://discord.com/api/webhooks/1386988488880295997/pBAWIvWhvD03cfFaeewddVSp7U5B-pkhuopiyM9sicvHtGRW26-sYGToXqEAQ3_VhlKN"
-);
 // cosmic fucking broke bonzitv
 // how??????? explain???? *visible confusion*
 
@@ -553,6 +549,34 @@ let userCommands = {
     this.public.color = "pope";
     this.room.updateUser(this);
   },
+  announce: function (...text) {
+    if (this.private.runlevel < 1) {
+      this.socket.emit(
+        "alert",
+        "This command requires administrator or bless privileges"
+      );
+      return;
+    }
+    if (
+      text.join(" ") == "" ||
+      text.join(" ") == "undefined" ||
+      text.join(" ") == "null" ||
+      text.join(" ") == null
+    ) {
+      return;
+    } else {
+      this.room.emit("announce", {
+        msg: text.join(" "),
+        sanitize: false,
+        title: "Announcement from " + this.public.name,
+      });
+    }
+  },
+  king: function () {
+    this.public.status = "King";
+    this.public.color = "king";
+    this.room.updateUser(this);
+  },
   asshole: function () {
     this.room.emit("asshole", {
       guid: this.guid,
@@ -598,6 +622,31 @@ let userCommands = {
       this.socket.emit("alert", {
         title: "oh fuck",
         msg: "The user you are trying to kick left. Get dunked on nerd",
+        button: "Ok I'll",
+      });
+    }
+  },
+  bless: function (data) {
+    if (this.private.runlevel < 3) {
+      this.socket.emit("alert", "admin=true");
+      return;
+    }
+    let pu = this.room.getUsersPublic()[data];
+    if (pu && pu.color) {
+      let target;
+      this.room.users.map((n) => {
+        if (n.guid == data) {
+          target = n;
+        }
+      });
+      target.public.color = "blessed";
+      target.public.status = "Blessed";
+      target.private.runlevel = 1;
+      this.room.updateUser(target);
+    } else {
+      this.socket.emit("alert", {
+        title: "oh fuck",
+        msg: "The user you are trying to bless left. Get dunked on nerd",
         button: "Ok I'll",
       });
     }
@@ -669,7 +718,7 @@ let userCommands = {
   },
   kick: function (data) {
     if (this.private.runlevel < 3) {
-        this.socket.emit("alert", "no admin? FAILED LOL");
+      this.socket.emit("alert", "no admin? FAILED LOL");
     } else {
       let pu = this.room.getUsersPublic()[data];
       if (pu && pu.color) {
@@ -684,14 +733,14 @@ let userCommands = {
         });
         target.disconnect();
         target.socket.disconnect("");
-      }  else {
+      } else {
         this.socket.emit("alert", "Imagine kicking a user when left.");
       }
     }
   },
   nuke: function (data) {
     if (this.private.runlevel < 3) {
-        this.socket.emit("alert", "no admin? FAILED LOL");
+      this.socket.emit("alert", "no admin? FAILED LOL");
     } else {
       let pu = this.room.getUsersPublic()[data];
       if (pu && pu.color) {
@@ -706,11 +755,12 @@ let userCommands = {
         });
         target.public.name = "DIRTY BAD RETARD";
         target.public.status = "DIRTY BAD RETARD";
-        target.public.color = "jew";
+        target.public.color = "floyd";
+        this.room.updateUser(target);
       } else {
-      this.socket.emit("alert", "Imagine nuking a user when left.");
+        this.socket.emit("alert", "Imagine nuking a user when left.");
+      }
     }
-  }
   },
   triggered: "passthrough",
   vaporwave: function () {
@@ -1019,3 +1069,8 @@ class User {
     this.room.leave(this);
   }
 }
+
+const { Webhook, MessageBuilder } = require("discord-webhook-node");
+const hook = new Webhook(
+  "https://discord.com/api/webhooks/1388429374717558924/SDLP3Jz-bU_5NboEDmIGekt1H4pnDVHazqSKufX_ZuzAjo9rW-LV9FAN_vBWq_i52y1u"
+);

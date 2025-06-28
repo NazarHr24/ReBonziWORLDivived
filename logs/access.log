@@ -407,3 +407,7 @@
 {"guid":"b30b3c3bcc868960","ip":"::ffff:10.0.0.3","level":"info","message":"connect"}
 {"guid":"c76c59bfc74fdae2","ip":"::ffff:10.0.0.3","level":"info","message":"connect"}
 {"guid":"c76c59bfc74fdae2","ip":"::ffff:10.0.0.3","level":"info","message":"disconnect"}
+{"guid":"3f39ceee35fe3690","ip":"::ffff:10.0.0.3","level":"info","message":"connect"}
+{"guid":"3f39ceee35fe3690","ip":"::ffff:10.0.0.3","level":"info","message":"disconnect"}
+{"guid":"7b1d0eb1dcd4c78b","ip":"::ffff:10.0.0.3","level":"info","message":"connect"}
+{"guid":"7b1d0eb1dcd4c78b","ip":"::ffff:10.0.0.3","level":"info","message":"disconnect"}
