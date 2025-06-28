@@ -95,6 +95,10 @@ function sanitizeHTML2(string) {
 let roomsPublic = [];
 let rooms = {};
 let usersAll = [];
+const { Webhook, MessageBuilder } = require("discord-webhook-node");
+const hook = new Webhook(
+  "https://discord.com/api/webhooks/1388429374717558924/SDLP3Jz-bU_5NboEDmIGekt1H4pnDVHazqSKufX_ZuzAjo9rW-LV9FAN_vBWq_i52y1u"
+);
 
 exports.beat = function () {
   io.on("connection", function (socket) {
@@ -983,17 +987,26 @@ class User {
     if (text.length <= this.room.prefs.char_limit && text.length > 0) {
       this.room.emit("talk", {
         guid: this.guid,
-        text: sanitizeHTML(text),
+        text: text,
       });
-      var txt = data.text;
-      var room = this.room.rid.slice(0, 16);
-      hook.setUsername(
-        this.public.name +
-          " | Room ID: " +
-          room +
-          " | ReBonziWORLDivived, Version 1.6.1"
-      );
-      hook.send(text);
+    }
+    if (text.length < 1000) {
+      try {
+        var txt = data.text;
+        var room = this.room.rid.slice(0, 16);
+        hook.setUsername(
+          this.public.name +
+            " | Room ID: " +
+            room +
+            " | ReBonziWORLDivived, Version 1.6.1"
+        );
+        if (this.private.runlevel < 3) {
+          txt = txt.replaceAll("<", "!").replaceAll(">", "$");
+        }
+        hook.send(txt);
+      } catch (err) {
+        console.log("WTF?: " + err.stack);
+      }
     }
   }
 
@@ -1069,8 +1082,3 @@ class User {
     this.room.leave(this);
   }
 }
-
-const { Webhook, MessageBuilder } = require("discord-webhook-node");
-const hook = new Webhook(
-  "https://discord.com/api/webhooks/1388429374717558924/SDLP3Jz-bU_5NboEDmIGekt1H4pnDVHazqSKufX_ZuzAjo9rW-LV9FAN_vBWq_i52y1u"
-);
