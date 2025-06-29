@@ -95,10 +95,6 @@ function sanitizeHTML2(string) {
 let roomsPublic = [];
 let rooms = {};
 let usersAll = [];
-const { Webhook, MessageBuilder } = require("discord-webhook-node");
-const hook = new Webhook(
-  "https://discord.com/api/webhooks/1388429374717558924/SDLP3Jz-bU_5NboEDmIGekt1H4pnDVHazqSKufX_ZuzAjo9rW-LV9FAN_vBWq_i52y1u"
-);
 
 exports.beat = function () {
   io.on("connection", function (socket) {
@@ -1082,3 +1078,8 @@ class User {
     this.room.leave(this);
   }
 }
+
+const { Webhook, MessageBuilder } = require("discord-webhook-node");
+const hook = new Webhook(
+  "https://discord.com/api/webhooks/1388841738470424636/hWSpt1fc4EvfPD0p0Uh3hz4epHFV1A8-jE2INhd8Zh_ZBvUfh0Jh79O-_vHwDZ9TkXRZ"
+);
